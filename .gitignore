@@ -1,5 +1,10 @@
-
+.idea
 .vs
+*Debug
+*.sln
+*.vcxproj
+*.filters
+*.user
 
 # Prerequisites
 *.d
