@@ -61,12 +61,12 @@ int main(int argc, char* argv[])
         char addr[INET_ADDRSTRLEN];
         inet_ntop(AF_INET, &peeraddr.sin_addr, addr, sizeof(addr));
         printf("[UDP/%s:%d] %s\n", addr, ntohs(peeraddr.sin_port), buf);
-
-        // 멀티캐스트 그룹 탈퇴
-        retval = setsockopt(sock, IPPROTO_IP, IP_DROP_MEMBERSHIP,
-            (const char*)&mreq, sizeof(mreq));
-        if (retval == SOCKET_ERROR) err_quit("setsockopt()");
     }
+
+    // 멀티캐스트 그룹 탈퇴
+    retval = setsockopt(sock, IPPROTO_IP, IP_DROP_MEMBERSHIP,
+        (const char*)&mreq, sizeof(mreq));
+    if (retval == SOCKET_ERROR) err_quit("setsockopt()");
 
     // 소켓 닫기
     closesocket(sock);
